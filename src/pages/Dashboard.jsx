@@ -8,6 +8,7 @@ const Dashboard = () => {
   const [parcels, setParcels] = useState([]);
   const [loading, setLoading] = useState(true);
   const [approvingId, setApprovingId] = useState("");
+  const [rejectingId, setRejectingId] = useState("");
   const [err, setErr] = useState("");
 
   const canApprove = useMemo(() => user?.department === "insurance", [user]);
@@ -44,6 +45,21 @@ const Dashboard = () => {
     }
   };
 
+  const onReject = async (id) => {
+    if (!canApprove) return;
+
+    setRejectingId(id);
+    setErr("");
+    try {
+      await client.delete(`/parcels/${id}/reject`);
+      setParcels((prev) => prev.filter((p) => p._id !== id));
+    } catch (e) {
+      setErr(e?.response?.data?.message || "Rejection failed");
+    } finally {
+      setRejectingId("");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-white to-zinc-50">
       <header className="sticky top-0 z-10 border-b border-zinc-200 bg-white/80 backdrop-blur">
@@ -57,7 +73,7 @@ const Dashboard = () => {
                 Parcel Approvals
               </h1>
               <p className="text-[11px] text-zinc-500">
-                Review and approve pending shipments
+                Review and approve pending parcels
               </p>
             </div>
           </div>
@@ -115,7 +131,7 @@ const Dashboard = () => {
               {canApprove ? "Approver" : "Viewer"}
             </div>
             <div className="mt-1 text-xs text-zinc-500">
-              Approval restricted to insurance
+              Approval + reject restricted to insurance
             </div>
           </div>
 
@@ -143,7 +159,7 @@ const Dashboard = () => {
         {!canApprove && (
           <div className="mb-4 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900">
             You can view pending parcels, but only the insurance department can
-            approve them.
+            approve or reject them.
           </div>
         )}
 
@@ -163,7 +179,9 @@ const Dashboard = () => {
         <ParcelTable
           parcels={parcels}
           onApprove={onApprove}
+          onReject={onReject}
           approvingId={approvingId}
+          rejectingId={rejectingId}
           canApprove={canApprove}
         />
       </main>
