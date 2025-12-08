@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
       return;
     }
+
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       try { setUser(JSON.parse(storedUser)); } catch {}

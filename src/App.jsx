@@ -7,22 +7,24 @@ import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="*" element={<Login />} />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+    <div className="min-h-screen bg-gradient-to-b from-white to-zinc-100">
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="*" element={<Login />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+    </div>
   );
 };
 
