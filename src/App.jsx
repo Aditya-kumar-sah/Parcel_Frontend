@@ -4,6 +4,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 import Home from './components/Home'
 import Products from './components/Products'
+import FinanceDept from './components/FinanceDept'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/home" element={<Home/>}/>
           <Route path="/products" element={<Products/>}/>
+          <Route path="/finance" element={<FinanceDept/>}/>
         </Routes>
       </BrowserRouter> 
     </>
