@@ -84,9 +84,8 @@ const FinanceDept = () => {
 
   return (
     <div className=" absolute inset-0 bg-gray-50">
-      {/* Navbar */}
       <nav className="w-full bg-white shadow-md py-4 px-6 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-900">Parcel Dept</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Parcel Manager</h1>
         <button
           onClick={handleLogout}
           className="bg-gray-600 text-white px-4 py-1.5 rounded-lg hover:bg-gray-800 transition"
@@ -95,7 +94,6 @@ const FinanceDept = () => {
         </button>
       </nav>
 
-      {/* Main Content */}
       <div className="p-6">
         <h2 className="text-2xl font-bold mb-6">Pending Parcels</h2>
 
