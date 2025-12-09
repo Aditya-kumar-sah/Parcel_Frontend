@@ -15,12 +15,14 @@ const Login = () => {
 
     try {
       setLoading(true);
-      await axios.post(`${import.meta.env.VITE_APP_BACKENDURL}/api/auth/login`, {
+      const user = await axios.post(`${import.meta.env.VITE_APP_BACKENDURL}/api/auth/login`, {
         email, password
       },
-  { withCredentials: true }
-);
-      navigate("/home")
+      { withCredentials: true }
+      );
+
+      if(user?.data?.dept !== "Finance") navigate("/home")
+      else navigate("/finance")
       setLoading(false);
     } catch (error) {
       console.error(error);
