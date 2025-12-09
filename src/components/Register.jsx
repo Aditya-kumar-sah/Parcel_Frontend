@@ -30,16 +30,16 @@ const Register = () => {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-500 to-pink-500 bg-opacity-90">
-        <div className="text-white text-2xl font-bold animate-pulse">Loading...</div>
+      <div className="fixed inset-0 flex items-center justify-center bg-white">
+        <div className="text-gray-700 text-2xl font-bold animate-pulse">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className=" absolute inset-0 flex items-center justify-center bg-gradient-to-tr from-purple-50 to-pink-50 p-4">
-      <div className="bg-white shadow-2xl rounded-2xl w-full max-w-md p-10 flex flex-col gap-6 transform hover:scale-105 transition-transform duration-300">
-        <h1 className="text-4xl font-extrabold text-center text-purple-700 mb-4 drop-shadow-md">Register</h1>
+    <div className="absolute inset-0 flex items-center justify-center bg-white p-4">
+      <div className="bg-white shadow-xl border border-gray-200 rounded-2xl w-full max-w-md p-10 flex flex-col gap-6 hover:shadow-2xl transition-shadow duration-300">
+        <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">Register</h1>
 
         <div className="flex flex-col gap-4">
           <input
@@ -47,7 +47,7 @@ const Register = () => {
             placeholder="Name"
             value={name}
             onChange={e => setName(e.target.value)}
-            className="w-full px-4 py-3 border border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:outline-none shadow-sm"
             required
           />
 
@@ -56,7 +56,7 @@ const Register = () => {
             placeholder="Email"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            className="w-full px-4 py-3 border border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:outline-none shadow-sm"
             required
           />
 
@@ -65,14 +65,13 @@ const Register = () => {
             placeholder="Password (min 6 chars)"
             value={password}
             onChange={e => setPassword(e.target.value)}
-            className="w-full px-4 py-3 border border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-400 focus:outline-none shadow-sm"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:outline-none shadow-sm"
             required
           />
 
-
           <button
             onClick={handleSubmit}
-            className="w-full cursor-pointer bg-gradient-to-r from-purple-600 to-pink-500 text-white font-bold py-3 rounded-xl hover:from-pink-500 hover:to-purple-600 shadow-lg transition-colors duration-300"
+            className="w-full bg-gray-800 text-white font-bold py-3 rounded-lg hover:bg-gray-900 transition-colors"
           >
             Register
           </button>
@@ -80,7 +79,7 @@ const Register = () => {
 
         <p className="text-center text-gray-600 mt-2">
           Already Registered?{" "}
-          <Link to="/login" className="text-purple-700 font-semibold hover:text-pink-500 hover:underline transition-colors duration-200">
+          <Link to="/login" className="text-gray-800 font-semibold hover:underline">
             Login
           </Link>
         </p>

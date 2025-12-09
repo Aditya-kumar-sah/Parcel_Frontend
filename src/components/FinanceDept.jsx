@@ -110,36 +110,24 @@ const FinanceDept = () => {
             <table className="min-w-full border border-gray-200">
               <thead className="bg-gray-100">
                 <tr>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                    Parcel ID
-                  </th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                    Sender
-                  </th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                    Weight
-                  </th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                    Value
-                  </th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                    Created At
-                  </th>
-                  <th className="px-4 py-3 flex justify-center text-sm font-semibold text-gray-700">
-                    Action
-                  </th>
+                  <th className="px-3 py-3 text-left text-sm font-semibold text-gray-700">Parcel ID</th>
+                  <th className="px-3 py-3 text-left text-sm font-semibold text-gray-700">Sender</th>
+                  <th className="px-3 py-3 text-left text-sm font-semibold text-gray-700">Weight</th>
+                  <th className="px-3 py-3 text-left text-sm font-semibold text-gray-700">Value</th>
+                  <th className="px-3 py-3 text-left text-sm font-semibold text-gray-700">Created At</th>
+                  <th className="px-3 py-3 text-left text-sm font-semibold text-gray-700">Action</th>
                 </tr>
               </thead>
 
               <tbody className="divide-y">
                 {parcels?.map((parcel) => (
                   <tr key={parcel._id} className="hover:bg-gray-50 transition">
-                    <td className="px-4 py-3 text-sm text-gray-700">{parcel._id}</td>
-                    <td className="px-4 py-3 text-sm text-gray-700">{parcel.senderName}</td>
-                    <td className="px-4 py-3 text-sm text-gray-700">{parcel.weight} kg</td>
-                    <td className="px-4 py-3 text-sm font-semibold text-gray-900">₹{parcel.value}</td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{new Date(parcel.createdAt).toLocaleString()}</td>
-                    <td className="px-4 py-3 flex gap-3 justify-center">
+                    <td className="px-3 py-3 text-sm text-gray-700">{parcel._id}</td>
+                    <td className="px-3 py-3 text-sm text-gray-700">{parcel.name}</td>
+                    <td className="px-3 py-3 text-sm text-gray-700">{parcel.weight} kg</td>
+                    <td className="px-3 py-3 text-sm font-semibold text-gray-900">₹{parcel.value}</td>
+                    <td className="px-3 py-3 text-sm text-gray-600">{new Date(parcel.createdAt).toLocaleString()}</td>
+                    <td className="px-3 py-3 flex gap-3">
                       <button
                         onClick={() => handleApprove(parcel._id)}
                         disabled={actionLoading === parcel._id}
